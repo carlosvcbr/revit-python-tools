@@ -34,14 +34,14 @@ def read_rules(csv_path):
     with codecs.open(csv_path, "r", encoding="utf-8-sig") as f:
         lines = f.read().splitlines()
 
-    # TODO 1 (your part):
-    #   - skip the first line (the header)
-    #   - skip empty lines
-    #   - split each line on ";" into category and parameter
-    #   - remove spaces around both with .strip()
-    #   - add the parameter to rules[category] (create the list if needed)
-    # Hint: rules.setdefault(category, []).append(parameter)
-
+    
+    for line in lines[1:]:              # every line except the 1st (header)
+        if not line.strip():            # empty line?
+            continue                    #   then skip to the next one
+        parts = line.split(";")         # "OST_Walls;Mark" -> ["OST_Walls", "Mark"]
+        category = parts[0].strip()     # 1st piece, without spaces
+        parameter = parts[1].strip()    # 
+        rules.setdefault(category, []).append(parameter)
     return rules
 
 
