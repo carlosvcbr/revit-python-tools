@@ -1,0 +1,5 @@
+title: "Param\nChecker"
+tooltip: >
+  Reads a CSV of required parameters per category and lists every element
+  whose required parameter is missing or empty. Read-only: never changes the model.
+author: "Carlos"
