@@ -7,6 +7,7 @@ Python tools that automate Revit and BIM quality checks, built as a
 
 | Tool | What it does | Changes the model? |
 |---|---|---|
+| **Create Rules CSV** | Lists every model category that has elements in the open model and saves a CSV template for Param Checker. | No |
 | **Param Checker** | Reads a CSV of required parameters per category and lists every element where a required parameter is missing or empty. Click an element id in the report to select it in Revit. | No |
 
 More tools will be added over time.
@@ -21,8 +22,10 @@ More tools will be added over time.
 
 ## Param Checker
 
-1. Write a CSV with the parameters each category must have
-   (see [`examples/required_params.csv`](examples/required_params.csv)):
+1. Click **Create Rules CSV** to get a template with the categories of your
+   model, or write the CSV yourself
+   (see [`examples/required_params.csv`](examples/required_params.csv)).
+   Fill in the parameter each category must have, one per line:
 
    ```
    category;parameter

@@ -1,0 +1,6 @@
+title: "Create\nRules CSV"
+tooltip: >
+  Lists every model category that has elements in the open model and saves
+  a CSV template for Param Checker. Fill in the parameter column, then run
+  Param Checker. Read-only: never changes the model.
+author: "Carlos"
