@@ -40,7 +40,9 @@ def read_rules(csv_path):
             continue                    #   then skip to the next one
         parts = line.split(";")         # "OST_Walls;Mark" -> ["OST_Walls", "Mark"]
         category = parts[0].strip()     # 1st piece, without spaces
-        parameter = parts[1].strip()    # 
+        parameter = parts[1].strip()    # 2nd piece, without spaces
+        if not parameter:
+            continue
         rules.setdefault(category, []).append(parameter)
     return rules
 
@@ -68,7 +70,6 @@ def find_parameter(element, param_name):
 
 def check_value(param):
     """Return "missing", "empty" or None (None means the value is fine)."""
-    # TODO 2 (your part):
     #   - if param is None, the element does not have it  -> return "missing"
     #   - if param.StorageType == DB.StorageType.String:
     #         text = param.AsString()
@@ -76,6 +77,19 @@ def check_value(param):
     #   - for other types (numbers, ids):
     #         if not param.HasValue                         -> return "empty"
     #   - otherwise                                         -> return None
+    if param is None:
+        return "missing"
+    if param.StorageType == DB.StorageType.String:
+        text = param.AsString()
+        if text is None or not text.strip():
+            return "empty"
+        return None
+    if not param.HasValue:
+        return "empty"
+    return None
+
+    
+
     return None
 
 
